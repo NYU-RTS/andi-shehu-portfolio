@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nyu-rts.github.io/andi-shehu-portfolio/sitemap.xml
