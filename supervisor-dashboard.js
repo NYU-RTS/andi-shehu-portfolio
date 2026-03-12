@@ -20,6 +20,7 @@ const state = {
 document.addEventListener("DOMContentLoaded", async () => {
   const metricGrid = document.getElementById("metric-grid");
   const projectGrid = document.getElementById("project-grid");
+  const exportButton = document.getElementById("export-review-notes");
 
   try {
     const response = await fetch("./SUPERVISOR_PROJECT_VISIBILITY_TRACKER.csv", { cache: "no-store" });
@@ -34,6 +35,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     renderMetrics(metricGrid, state.projects);
     renderProjects(projectGrid, state.projects, state.activeFilter);
     bindFilters(projectGrid);
+    bindExportButton(exportButton);
   } catch (error) {
     metricGrid.innerHTML = "";
     projectGrid.innerHTML = `<div class="empty-state">The dashboard could not load the tracker data. Open the raw CSV instead.</div>`;
@@ -114,7 +116,7 @@ function renderProjects(container, projects, activeFilter) {
         : `<span class="project-url is-muted">${escapeHtml(project.public_url_or_access || "No public URL")}</span>`;
 
       return `
-        <article class="project-card">
+        <article class="project-card" data-project-key="${escapeAttribute(getProjectKey(project))}">
           <header class="project-card-header">
             <div class="project-card-title-wrap">
               <div class="project-card-title-line">
@@ -176,16 +178,322 @@ function renderProjects(container, projects, activeFilter) {
               <p class="funding-text">${escapeHtml(project.funding_case_for_leadership)}</p>
             </section>
           </div>
+
+          ${buildReviewWorkspace(project)}
         </article>
       `;
     })
     .join("");
+
+  bindReviewControls(container);
 }
 
 function normalizeProject(project) {
   return Object.fromEntries(
     Object.entries(project).map(([key, value]) => [key, (value || "").trim()])
   );
+}
+
+function buildReviewWorkspace(project) {
+  const reviewState = getReviewState(project);
+
+  return `
+    <section class="review-workspace" data-project-key="${escapeAttribute(getProjectKey(project))}">
+      <div class="review-workspace-header">
+        <div>
+          <p class="section-kicker">Supervisor review</p>
+        </div>
+        <p class="review-saved-state" data-review-saved-state>${escapeHtml(formatSavedState(reviewState))}</p>
+      </div>
+
+      <div class="review-grid">
+        <label class="review-field">
+          <span class="review-label">Review status</span>
+          <select class="review-select" data-review-field="reviewStatus">
+            ${buildOptionMarkup(
+              [
+                "",
+                "Pending review",
+                "Reviewed",
+                "Needs follow-up",
+                "Blocked",
+              ],
+              reviewState.reviewStatus
+            )}
+          </select>
+        </label>
+
+        <label class="review-field">
+          <span class="review-label">Approval</span>
+          <select class="review-select" data-review-field="approvalStatus">
+            ${buildOptionMarkup(
+              [
+                "",
+                "Pending decision",
+                "Approved",
+                "Approved with edits",
+                "Hold",
+              ],
+              reviewState.approvalStatus
+            )}
+          </select>
+        </label>
+
+        <label class="review-field">
+          <span class="review-label">Next review date</span>
+          <input
+            class="review-input"
+            data-review-field="nextReviewDate"
+            type="date"
+            value="${escapeAttribute(reviewState.nextReviewDate)}"
+          />
+        </label>
+      </div>
+
+      <label class="review-field review-field-full">
+        <span class="review-label">Notes</span>
+        <textarea class="review-textarea" data-review-field="notes" placeholder="Add review notes, approvals, blockers, or decisions.">${escapeHtml(reviewState.notes)}</textarea>
+      </label>
+
+      <div class="review-actions">
+        <div class="review-action-group">
+          <button class="review-button review-button-primary" type="button" data-review-save>
+            Save review
+          </button>
+          <button class="review-button" type="button" data-review-clear>Clear</button>
+        </div>
+        <p class="review-hint">Saved in this browser only. Use export if you need to share or archive notes.</p>
+      </div>
+    </section>
+  `;
+}
+
+function buildOptionMarkup(options, selectedValue) {
+  return options
+    .map((option) => {
+      const label = option || "Select";
+      const selected = option === selectedValue ? " selected" : "";
+
+      return `<option value="${escapeAttribute(option)}"${selected}>${escapeHtml(label)}</option>`;
+    })
+    .join("");
+}
+
+function bindReviewControls(container) {
+  const workspaces = container.querySelectorAll(".review-workspace");
+
+  workspaces.forEach((workspace) => {
+    const projectKey = workspace.dataset.projectKey;
+    const project = state.projects.find((item) => getProjectKey(item) === projectKey);
+
+    if (!project) {
+      return;
+    }
+
+    const saveButton = workspace.querySelector("[data-review-save]");
+    const clearButton = workspace.querySelector("[data-review-clear]");
+
+    saveButton.addEventListener("click", () => {
+      const reviewState = collectReviewState(workspace, project);
+      try {
+        localStorage.setItem(projectKey, JSON.stringify(reviewState));
+        updateSavedState(workspace, reviewState);
+      } catch (error) {
+        console.error(error);
+        workspace.querySelector("[data-review-saved-state]").textContent = "Could not save locally in this browser";
+      }
+    });
+
+    clearButton.addEventListener("click", () => {
+      try {
+        localStorage.removeItem(projectKey);
+      } catch (error) {
+        console.error(error);
+      }
+      const defaultState = getDefaultReviewState(project);
+      applyReviewState(workspace, defaultState);
+      updateSavedState(workspace, defaultState);
+    });
+  });
+}
+
+function collectReviewState(workspace, project) {
+  const defaultState = getDefaultReviewState(project);
+
+  return {
+    reviewStatus: workspace.querySelector('[data-review-field="reviewStatus"]').value.trim(),
+    approvalStatus: workspace.querySelector('[data-review-field="approvalStatus"]').value.trim(),
+    nextReviewDate: workspace.querySelector('[data-review-field="nextReviewDate"]').value.trim(),
+    notes: workspace.querySelector('[data-review-field="notes"]').value.trim(),
+    lastSaved: new Date().toISOString(),
+    fallbackReviewStatus: defaultState.reviewStatus,
+    fallbackApprovalStatus: defaultState.approvalStatus,
+    fallbackNextReviewDate: defaultState.nextReviewDate,
+    fallbackNotes: defaultState.notes,
+  };
+}
+
+function applyReviewState(workspace, reviewState) {
+  workspace.querySelector('[data-review-field="reviewStatus"]').value = reviewState.reviewStatus || "";
+  workspace.querySelector('[data-review-field="approvalStatus"]').value = reviewState.approvalStatus || "";
+  workspace.querySelector('[data-review-field="nextReviewDate"]').value = reviewState.nextReviewDate || "";
+  workspace.querySelector('[data-review-field="notes"]').value = reviewState.notes || "";
+}
+
+function updateSavedState(workspace, reviewState) {
+  const savedState = workspace.querySelector("[data-review-saved-state]");
+  savedState.textContent = formatSavedState(reviewState);
+}
+
+function getDefaultReviewState(project) {
+  return {
+    reviewStatus: project.supervisor_review_status || "",
+    approvalStatus: project.approval_status || "",
+    nextReviewDate: project.next_review_date || "",
+    notes: project.supervisor_notes || "",
+    lastSaved: "",
+  };
+}
+
+function getReviewState(project) {
+  const projectKey = getProjectKey(project);
+  const defaultState = getDefaultReviewState(project);
+
+  try {
+    const savedState = localStorage.getItem(projectKey);
+
+    if (!savedState) {
+      return defaultState;
+    }
+
+    return {
+      ...defaultState,
+      ...JSON.parse(savedState),
+    };
+  } catch (error) {
+    console.error(error);
+    return defaultState;
+  }
+}
+
+function formatSavedState(reviewState) {
+  if (reviewState.lastSaved) {
+    return `Saved locally ${formatRelativeTime(reviewState.lastSaved)}`;
+  }
+
+  if (
+    reviewState.reviewStatus ||
+    reviewState.approvalStatus ||
+    reviewState.nextReviewDate ||
+    reviewState.notes
+  ) {
+    return "Pre-filled from tracker";
+  }
+
+  return "No review notes yet";
+}
+
+function formatRelativeTime(isoDate) {
+  const timestamp = new Date(isoDate).getTime();
+
+  if (Number.isNaN(timestamp)) {
+    return "recently";
+  }
+
+  const diffMinutes = Math.max(0, Math.round((Date.now() - timestamp) / 60000));
+
+  if (diffMinutes < 1) {
+    return "just now";
+  }
+
+  if (diffMinutes === 1) {
+    return "1 minute ago";
+  }
+
+  if (diffMinutes < 60) {
+    return `${diffMinutes} minutes ago`;
+  }
+
+  const diffHours = Math.round(diffMinutes / 60);
+
+  if (diffHours === 1) {
+    return "1 hour ago";
+  }
+
+  if (diffHours < 24) {
+    return `${diffHours} hours ago`;
+  }
+
+  const diffDays = Math.round(diffHours / 24);
+  return diffDays === 1 ? "1 day ago" : `${diffDays} days ago`;
+}
+
+function bindExportButton(button) {
+  if (!button) {
+    return;
+  }
+
+  button.addEventListener("click", () => {
+    const exportRows = state.projects.map((project) => {
+      const reviewState = getReviewState(project);
+
+      return {
+        project_title: project.project_title,
+        current_status: project.current_status,
+        review_status: reviewState.reviewStatus,
+        approval_status: reviewState.approvalStatus,
+        next_review_date: reviewState.nextReviewDate,
+        supervisor_notes: reviewState.notes,
+        last_saved: reviewState.lastSaved,
+      };
+    });
+
+    const csv = toCsv(exportRows);
+    downloadFile("supervisor-review-notes.csv", csv, "text/csv;charset=utf-8;");
+  });
+}
+
+function getProjectKey(project) {
+  return `supervisor-review:${project.project_title}`;
+}
+
+function toCsv(rows) {
+  if (!rows.length) {
+    return "";
+  }
+
+  const headers = Object.keys(rows[0]);
+  const lines = [headers.join(",")];
+
+  rows.forEach((row) => {
+    const values = headers.map((header) => escapeCsvValue(row[header] || ""));
+    lines.push(values.join(","));
+  });
+
+  return lines.join("\n");
+}
+
+function escapeCsvValue(value) {
+  const stringValue = String(value);
+
+  if (/[",\n]/.test(stringValue)) {
+    return `"${stringValue.replaceAll('"', '""')}"`;
+  }
+
+  return stringValue;
+}
+
+function downloadFile(filename, content, mimeType) {
+  const blob = new Blob([content], { type: mimeType });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
 }
 
 function parseCsv(csvText) {
