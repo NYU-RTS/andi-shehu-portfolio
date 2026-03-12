@@ -521,14 +521,25 @@ h4 {
 .closing-note {
   margin-top: 30px;
   padding-top: 6px;
+  display: grid;
+  gap: 6px;
+}
+
+.closing-label {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .closing-line {
   margin: 0;
   color: var(--muted);
-  font-size: 0.98rem;
-  line-height: 1.65;
-  max-width: 58ch;
+  font-size: 0.96rem;
+  line-height: 1.6;
+  max-width: 52ch;
 }
 
 .site-footer {
