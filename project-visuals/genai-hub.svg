@@ -1,8 +1,8 @@
 <svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="1200" height="800" fill="#F4F1F7"/>
   <rect x="48" y="48" width="1104" height="704" rx="24" fill="#FBFAFC" stroke="#D6D1DC"/>
-  <rect x="92" y="92" width="236" height="48" rx="24" fill="#57068C"/>
-  <text x="124" y="123" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700">Research platform</text>
+  <rect x="92" y="92" width="196" height="48" rx="24" fill="#57068C"/>
+  <text x="124" y="123" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700">Research hub</text>
   <text x="96" y="182" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="50" font-weight="700">Network map</text>
   <text x="96" y="222" fill="#6D6D6D" font-family="Arial, Helvetica, sans-serif" font-size="24">Projects, use cases, labs, and capability clusters.</text>
   <path d="M244 420L390 330L600 416L748 296L934 382" stroke="#B28CCC" stroke-width="8" stroke-linecap="round"/>
@@ -15,9 +15,9 @@
   <circle cx="430" cy="540" r="28" fill="#E8DED4"/>
   <circle cx="624" cy="604" r="32" fill="#C7B1D8"/>
   <circle cx="858" cy="568" r="36" fill="#57068C"/>
-  <rect x="812" y="134" width="250" height="78" rx="20" fill="#FFFFFF" stroke="#D6D1DC"/>
-  <text x="844" y="168" fill="#57068C" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700">Access by request</text>
-  <text x="844" y="196" fill="#6D6D6D" font-family="Arial, Helvetica, sans-serif" font-size="18">Private preview for selected groups</text>
+  <rect x="812" y="134" width="236" height="78" rx="20" fill="#FFFFFF" stroke="#D6D1DC"/>
+  <text x="844" y="168" fill="#57068C" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Preview access</text>
+  <text x="844" y="196" fill="#6D6D6D" font-family="Arial, Helvetica, sans-serif" font-size="18">Selected groups</text>
   <rect x="832" y="442" width="220" height="64" rx="18" fill="#FFFFFF" stroke="#D6D1DC"/>
   <text x="860" y="480" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="22">Projects</text>
   <rect x="892" y="530" width="160" height="56" rx="18" fill="#FFFFFF" stroke="#D6D1DC"/>
