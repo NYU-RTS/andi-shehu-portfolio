@@ -1,0 +1,32 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" fill="#F4F2EE"/>
+  <rect x="48" y="48" width="1104" height="704" rx="24" fill="#FBFAF8" stroke="#D8D2C8"/>
+  <text x="96" y="138" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700">NYU GenAI Workshops</text>
+  <text x="96" y="176" fill="#6D6D6D" font-family="Arial, Helvetica, sans-serif" font-size="24">Training engine for research, teaching, and workflow adoption.</text>
+  <rect x="96" y="240" width="310" height="404" rx="24" fill="#1F2023"/>
+  <text x="132" y="302" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Session arc</text>
+  <rect x="132" y="338" width="238" height="54" rx="18" fill="#57068C"/>
+  <rect x="132" y="414" width="238" height="54" rx="18" fill="#8A65A9"/>
+  <rect x="132" y="490" width="238" height="54" rx="18" fill="#B89CCF"/>
+  <text x="164" y="372" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="20">Research use cases</text>
+  <text x="164" y="448" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="20">Teaching workflows</text>
+  <text x="164" y="524" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="20">Automation exercises</text>
+  <rect x="452" y="240" width="258" height="182" rx="24" fill="#FFFFFF" stroke="#D6D6D6"/>
+  <text x="486" y="294" fill="#57068C" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Toolkit</text>
+  <text x="486" y="336" fill="#6D6D6D" font-family="Arial, Helvetica, sans-serif" font-size="20">Prompting</text>
+  <text x="486" y="368" fill="#6D6D6D" font-family="Arial, Helvetica, sans-serif" font-size="20">Evaluation</text>
+  <text x="486" y="400" fill="#6D6D6D" font-family="Arial, Helvetica, sans-serif" font-size="20">Hands-on practice</text>
+  <rect x="742" y="240" width="314" height="182" rx="24" fill="#EEE6F3" stroke="#D6D1DC"/>
+  <text x="778" y="294" fill="#57068C" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Audience</text>
+  <text x="778" y="336" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="20">Faculty</text>
+  <text x="778" y="368" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="20">Staff</text>
+  <text x="778" y="400" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="20">Research teams</text>
+  <rect x="452" y="462" width="604" height="182" rx="24" fill="#FFFFFF" stroke="#D6D6D6"/>
+  <text x="490" y="518" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Workflow outcomes</text>
+  <rect x="490" y="548" width="150" height="46" rx="16" fill="#F2F2F2"/>
+  <rect x="660" y="548" width="164" height="46" rx="16" fill="#F2F2F2"/>
+  <rect x="844" y="548" width="176" height="46" rx="16" fill="#F2F2F2"/>
+  <text x="522" y="578" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="18">research support</text>
+  <text x="690" y="578" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="18">teaching practice</text>
+  <text x="876" y="578" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="18">workflow automation</text>
+</svg>

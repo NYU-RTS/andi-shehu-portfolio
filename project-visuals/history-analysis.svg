@@ -1,0 +1,29 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" fill="#F2EEE8"/>
+  <rect x="48" y="48" width="1104" height="704" rx="24" fill="#FBF8F2" stroke="#D8D0C5"/>
+  <text x="96" y="140" fill="#4A4037" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="700">AI History Analysis Studio</text>
+  <text x="96" y="182" fill="#8A7C6F" font-family="Arial, Helvetica, sans-serif" font-size="24">Archival materials paired with retrieval and analysis.</text>
+  <rect x="96" y="234" width="432" height="468" rx="24" fill="#EFE2CC" stroke="#C8B89B"/>
+  <text x="138" y="320" fill="#6E5B48" font-family="Georgia, 'Times New Roman', serif" font-size="86">A</text>
+  <rect x="210" y="286" width="256" height="10" rx="5" fill="#C8B89B"/>
+  <rect x="210" y="322" width="230" height="10" rx="5" fill="#D5C9B1"/>
+  <rect x="138" y="388" width="320" height="10" rx="5" fill="#D5C9B1"/>
+  <rect x="138" y="424" width="286" height="10" rx="5" fill="#C8B89B"/>
+  <rect x="138" y="460" width="336" height="10" rx="5" fill="#D5C9B1"/>
+  <rect x="138" y="496" width="304" height="10" rx="5" fill="#C8B89B"/>
+  <rect x="138" y="532" width="350" height="10" rx="5" fill="#D5C9B1"/>
+  <rect x="580" y="234" width="524" height="468" rx="24" fill="#F7F4FA" stroke="#CDBDDD"/>
+  <rect x="620" y="278" width="444" height="110" rx="22" fill="#FFFFFF" stroke="#D6D6D6"/>
+  <text x="654" y="326" fill="#57068C" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Semantic retrieval</text>
+  <text x="654" y="362" fill="#6D6D6D" font-family="Arial, Helvetica, sans-serif" font-size="20">Translated passages and linked references.</text>
+  <rect x="620" y="424" width="206" height="206" rx="22" fill="#1F2023"/>
+  <text x="652" y="478" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Topic</text>
+  <text x="652" y="516" fill="#CFCFD4" font-family="Arial, Helvetica, sans-serif" font-size="20">religion</text>
+  <text x="652" y="548" fill="#CFCFD4" font-family="Arial, Helvetica, sans-serif" font-size="20">translation</text>
+  <text x="652" y="580" fill="#CFCFD4" font-family="Arial, Helvetica, sans-serif" font-size="20">historical context</text>
+  <rect x="850" y="424" width="214" height="206" rx="22" fill="#E9DDEF"/>
+  <text x="882" y="478" fill="#57068C" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Analysis</text>
+  <text x="882" y="516" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="20">compare editions</text>
+  <text x="882" y="548" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="20">trace themes</text>
+  <text x="882" y="580" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="20">inspect evidence</text>
+</svg>

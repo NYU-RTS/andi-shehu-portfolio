@@ -272,26 +272,83 @@ h4 {
   line-height: 1.55;
 }
 
-.project-list {
+.project-showcase,
+.project-list-secondary {
+  display: grid;
+  gap: 20px;
+}
+
+.project-list-secondary {
+  margin-top: 20px;
+}
+
+.project-card {
+  display: grid;
   background: var(--surface);
   border: 1px solid var(--line);
 }
 
-.project-row {
-  display: grid;
-  grid-template-columns: minmax(240px, 0.82fr) minmax(0, 2.2fr);
-  gap: 34px;
-  padding: 22px 24px;
-  border-bottom: 1px solid var(--line);
+.project-card-featured {
+  grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
+  align-items: stretch;
+  min-height: 420px;
 }
 
-.project-row:last-child {
-  border-bottom: 0;
+.project-card-secondary {
+  grid-template-columns: 292px minmax(0, 1fr);
+}
+
+.project-card-reverse .project-media {
+  order: 2;
+  border-right: 0;
+  border-left: 1px solid var(--line);
+}
+
+.project-card-reverse .project-copy {
+  order: 1;
+}
+
+.project-media {
+  position: relative;
+  margin: 0;
+  min-height: 240px;
+  overflow: hidden;
+  background: #ece8f0;
+  border-right: 1px solid var(--line);
+}
+
+.project-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-media-caption {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  margin: 0;
+  padding: 6px 10px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(64, 64, 64, 0.12);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-copy {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 26px 28px;
 }
 
 .project-meta {
   display: grid;
-  gap: 6px;
+  gap: 8px;
   align-content: start;
 }
 
@@ -304,7 +361,14 @@ h4 {
   text-transform: uppercase;
 }
 
+.project-card-featured .project-name {
+  font-size: clamp(1.55rem, 2.6vw, 2rem);
+  line-height: 1.12;
+}
+
 .project-content {
+  display: grid;
+  gap: 10px;
   max-width: none;
 }
 
@@ -313,16 +377,21 @@ h4 {
   color: var(--text);
 }
 
+.project-card-featured .project-summary {
+  font-size: 1.04rem;
+  line-height: 1.7;
+}
+
 .project-note {
-  margin: 8px 0 0;
+  margin: 0;
   font-size: 0.96rem;
-  max-width: 86ch;
+  max-width: 72ch;
 }
 
 .project-links {
   display: grid;
   gap: 5px;
-  margin-top: 16px;
+  margin-top: 4px;
   padding: 10px 12px;
   background: var(--accent-soft);
   border-left: 2px solid var(--accent);
@@ -402,9 +471,29 @@ h4 {
     width: 132px;
   }
 
-  .project-row {
+  .project-card-featured,
+  .project-card-secondary {
     grid-template-columns: 1fr;
-    gap: 10px;
+  }
+
+  .project-card-reverse .project-media,
+  .project-media {
+    border-right: 0;
+    border-left: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .project-card-reverse .project-media,
+  .project-card-reverse .project-copy {
+    order: initial;
+  }
+
+  .project-media {
+    min-height: 232px;
+  }
+
+  .project-copy {
+    padding: 20px 18px;
   }
 }
 
@@ -427,7 +516,9 @@ h4 {
     align-items: stretch;
   }
 
-  .project-row {
-    padding: 18px;
+  .project-media-caption {
+    left: 12px;
+    bottom: 12px;
+    font-size: 0.68rem;
   }
 }
