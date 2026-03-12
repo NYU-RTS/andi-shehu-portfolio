@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Supervisor Project Dashboard | Andi Shehu</title>
+    <meta
+      name="description"
+      content="Supervisor-facing project dashboard for Andi Shehu's NYU and consulting applied AI work, including progress, next steps, support needs, and funding case."
+    />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#43106d" />
+    <link rel="stylesheet" href="./supervisor-dashboard.css" />
+    <script src="./supervisor-dashboard.js" defer></script>
+  </head>
+  <body>
+    <div class="dashboard-shell">
+      <header class="dashboard-header">
+        <div class="dashboard-header-copy">
+          <p class="eyebrow">Supervisor view</p>
+          <h1>Applied AI project visibility dashboard</h1>
+          <p class="header-summary">
+            A supervisor-facing view of current work, visible outputs, next
+            steps, and where support or additional funding would increase impact.
+          </p>
+        </div>
+        <div class="dashboard-actions">
+          <a class="action-link action-link-primary" href="./SUPERVISOR_PROJECT_VISIBILITY_TRACKER.csv"
+            >Open raw tracker</a
+          >
+          <a class="action-link" href="./index.html">Back to portfolio</a>
+        </div>
+      </header>
+
+      <main>
+        <section class="overview-panel" aria-label="Executive overview">
+          <div class="overview-copy">
+            <p class="overview-label">Executive framing</p>
+            <h2>Clear evidence of shipped work, active priorities, and what support would unlock next.</h2>
+            <p>
+              This dashboard is designed for upward reporting. Each project
+              shows what already exists, what is moving now, what requires
+              leadership support, and how additional funding would extend impact.
+            </p>
+          </div>
+          <div class="overview-metrics" id="metric-grid" aria-live="polite"></div>
+        </section>
+
+        <section class="toolbar" aria-label="Filters">
+          <div class="toolbar-copy">
+            <p class="toolbar-label">Projects</p>
+            <p class="toolbar-note">Filter the list by status or reporting need.</p>
+          </div>
+          <div class="filter-group" role="tablist" aria-label="Project filters">
+            <button class="filter-chip is-active" type="button" data-filter="all">All</button>
+            <button class="filter-chip" type="button" data-filter="priority">Top priorities</button>
+            <button class="filter-chip" type="button" data-filter="active">Active</button>
+            <button class="filter-chip" type="button" data-filter="review">Needs review</button>
+            <button class="filter-chip" type="button" data-filter="public">Public outputs</button>
+          </div>
+        </section>
+
+        <section class="project-grid" id="project-grid" aria-live="polite"></section>
+
+        <section class="closing-panel" aria-label="Reporting note">
+          <p class="closing-panel-label">How to use this</p>
+          <p class="closing-panel-text">
+            Use this page to show progress, surface decision points, and make a
+            concrete case that additional support would expand both research
+            infrastructure and applied AI delivery across NYU.
+          </p>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
