@@ -286,6 +286,8 @@ h4 {
   display: grid;
   gap: 14px;
   padding: 22px 24px 24px;
+  min-width: 0;
+  overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--line);
   border-left: 3px solid var(--accent);
@@ -299,20 +301,14 @@ h4 {
   grid-template-columns: 1fr;
 }
 
-.project-card-reverse .project-media {
-  order: 2;
-}
-
-.project-card-reverse .project-copy {
-  order: 1;
-}
-
 .project-media {
   display: grid;
   margin: 0;
   order: 2;
+  min-width: 0;
   background: #ffffff;
   border: 1px solid var(--line);
+  border-bottom: 0;
 }
 
 .project-media img {
@@ -340,6 +336,7 @@ h4 {
   display: grid;
   align-content: start;
   gap: 12px;
+  min-width: 0;
   padding: 0;
 }
 
@@ -350,6 +347,7 @@ h4 {
 .project-meta {
   display: grid;
   gap: 8px;
+  min-width: 0;
   align-content: start;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--line);
@@ -372,6 +370,7 @@ h4 {
 .project-content {
   display: grid;
   gap: 10px;
+  min-width: 0;
   max-width: none;
 }
 
@@ -398,10 +397,14 @@ h4 {
 .project-links {
   display: grid;
   gap: 5px;
-  margin-top: 4px;
+  min-width: 0;
+  order: 3;
+  margin-top: -14px;
   padding: 10px 12px;
-  background: var(--accent-soft);
-  border-left: 2px solid var(--accent);
+  background: #faf8fc;
+  border: 1px solid var(--line);
+  border-top: 0;
+  border-left: 3px solid var(--accent);
 }
 
 .project-url-label {
@@ -414,12 +417,14 @@ h4 {
 }
 
 .project-url {
+  display: block;
   max-width: 100%;
   color: var(--accent);
   font-family: "SFMono-Regular", Menlo, Consolas, monospace;
   font-size: 0.84rem;
   line-height: 1.6;
-  word-break: break-all;
+  overflow-wrap: anywhere;
+  word-break: break-word;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-decoration-color: rgba(70, 90, 120, 0.4);
@@ -433,6 +438,14 @@ h4 {
 .project-url-muted {
   color: var(--muted);
   text-decoration: none;
+}
+
+.project-type,
+.project-name,
+.project-summary,
+.project-note,
+.project-media-caption {
+  overflow-wrap: anywhere;
 }
 
 .site-footer {
@@ -481,11 +494,6 @@ h4 {
   .project-card-featured,
   .project-card-secondary {
     grid-template-columns: 1fr;
-  }
-
-  .project-card-reverse .project-media,
-  .project-card-reverse .project-copy {
-    order: initial;
   }
 
   .project-card {
