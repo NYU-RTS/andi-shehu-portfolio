@@ -275,33 +275,31 @@ h4 {
 .project-showcase,
 .project-list-secondary {
   display: grid;
-  gap: 20px;
+  gap: 24px;
 }
 
 .project-list-secondary {
-  margin-top: 20px;
+  margin-top: 24px;
 }
 
 .project-card {
   display: grid;
+  gap: 0;
   background: var(--surface);
   border: 1px solid var(--line);
 }
 
 .project-card-featured {
-  grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
-  align-items: stretch;
-  min-height: 420px;
+  grid-template-columns: 1fr;
 }
 
 .project-card-secondary {
-  grid-template-columns: 292px minmax(0, 1fr);
+  grid-template-columns: 1fr;
 }
 
 .project-card-reverse .project-media {
   order: 2;
-  border-right: 0;
-  border-left: 1px solid var(--line);
+  border-left: 0;
 }
 
 .project-card-reverse .project-copy {
@@ -311,17 +309,20 @@ h4 {
 .project-media {
   position: relative;
   margin: 0;
-  min-height: 240px;
+  order: 2;
+  min-height: 0;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: #ece8f0;
-  border-right: 1px solid var(--line);
+  background: linear-gradient(180deg, #f7f5f9, #efebf3);
+  border-top: 1px solid var(--line);
 }
 
 .project-media img {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 .project-media-caption {
@@ -346,6 +347,14 @@ h4 {
   padding: 26px 28px;
 }
 
+.project-card-featured .project-copy {
+  padding: 28px 30px 20px;
+}
+
+.project-card-secondary .project-copy {
+  padding: 22px 24px 16px;
+}
+
 .project-meta {
   display: grid;
   gap: 8px;
@@ -362,8 +371,8 @@ h4 {
 }
 
 .project-card-featured .project-name {
-  font-size: clamp(1.55rem, 2.6vw, 2rem);
-  line-height: 1.12;
+  font-size: clamp(1.45rem, 2.2vw, 1.78rem);
+  line-height: 1.15;
 }
 
 .project-content {
@@ -378,14 +387,23 @@ h4 {
 }
 
 .project-card-featured .project-summary {
-  font-size: 1.04rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.68;
 }
 
 .project-note {
   margin: 0;
   font-size: 0.96rem;
   max-width: 72ch;
+}
+
+.project-card-secondary .project-media {
+  aspect-ratio: 16 / 10;
+}
+
+.project-card-secondary .project-summary,
+.project-card-secondary .project-note {
+  max-width: 78ch;
 }
 
 .project-links {
@@ -478,9 +496,8 @@ h4 {
 
   .project-card-reverse .project-media,
   .project-media {
-    border-right: 0;
     border-left: 0;
-    border-bottom: 1px solid var(--line);
+    border-top: 1px solid var(--line);
   }
 
   .project-card-reverse .project-media,
@@ -489,7 +506,7 @@ h4 {
   }
 
   .project-media {
-    min-height: 232px;
+    aspect-ratio: 16 / 10;
   }
 
   .project-copy {
