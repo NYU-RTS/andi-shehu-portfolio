@@ -520,26 +520,19 @@ h4 {
 
 .closing-note {
   margin-top: 30px;
-  padding-top: 6px;
-  display: grid;
-  gap: 6px;
-}
-
-.closing-label {
-  margin: 0;
-  color: var(--accent);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  padding: 18px 20px;
+  background: linear-gradient(180deg, rgba(241, 233, 248, 0.9), rgba(241, 233, 248, 0.55));
+  border: 1px solid rgba(67, 16, 109, 0.14);
+  border-left: 3px solid rgba(67, 16, 109, 0.72);
+  border-radius: var(--radius-md);
 }
 
 .closing-line {
   margin: 0;
-  color: var(--muted);
-  font-size: 0.96rem;
+  color: #362f3d;
+  font-size: 0.95rem;
   line-height: 1.6;
-  max-width: 52ch;
+  max-width: 60ch;
 }
 
 .site-footer {
@@ -709,7 +702,11 @@ h4 {
     gap: 6px 8px;
   }
 
+  .closing-note {
+    padding: 16px 18px;
+  }
+
   .closing-line {
-    font-size: 0.94rem;
+    font-size: 0.93rem;
   }
 }
