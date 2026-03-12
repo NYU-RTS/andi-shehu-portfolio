@@ -1,7 +1,7 @@
 <svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="1200" height="800" fill="#F4F2EE"/>
   <rect x="48" y="48" width="1104" height="704" rx="24" fill="#FBFAF8" stroke="#D8D2C8"/>
-  <text x="96" y="138" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700">NYU GenAI Workshops</text>
+  <text x="96" y="138" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700">NYU GenAI Workshops</text>
   <text x="96" y="176" fill="#6D6D6D" font-family="Arial, Helvetica, sans-serif" font-size="24">Training engine for research, teaching, and workflow adoption.</text>
   <rect x="96" y="240" width="310" height="404" rx="24" fill="#1F2023"/>
   <text x="132" y="302" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Session arc</text>

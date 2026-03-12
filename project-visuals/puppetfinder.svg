@@ -1,7 +1,7 @@
 <svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="1200" height="800" fill="#F7F2EC"/>
   <rect x="48" y="48" width="1104" height="704" rx="24" fill="#FFFDF9" stroke="#DDD2C5"/>
-  <text x="96" y="138" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700">Find Puppet Shows Near You</text>
+  <text x="96" y="138" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">Find Puppet Shows Near You</text>
   <text x="96" y="176" fill="#7A6B5C" font-family="Arial, Helvetica, sans-serif" font-size="24">Poster-led discovery with direct venue and ticket paths.</text>
   <rect x="96" y="244" width="172" height="220" rx="20" fill="#57068C"/>
   <rect x="292" y="244" width="172" height="220" rx="20" fill="#E4A83E"/>

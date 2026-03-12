@@ -1,7 +1,7 @@
 <svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="1200" height="800" fill="#EFF2F4"/>
   <rect x="48" y="48" width="1104" height="704" rx="24" fill="#FAFCFD" stroke="#D0D7DD"/>
-  <text x="96" y="138" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700">Retail Shelf Computer Vision</text>
+  <text x="96" y="138" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">Retail Shelf Computer Vision</text>
   <text x="96" y="176" fill="#6D6D6D" font-family="Arial, Helvetica, sans-serif" font-size="24">Shelf detection, classification, and policy-facing analysis.</text>
   <rect x="96" y="244" width="1008" height="416" rx="24" fill="#DCE5EA"/>
   <rect x="130" y="290" width="940" height="78" rx="18" fill="#B8CAD5"/>
