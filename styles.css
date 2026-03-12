@@ -297,6 +297,7 @@ h4 {
 }
 
 .project-card {
+  position: relative;
   display: grid;
   gap: var(--space-4);
   padding: 26px 28px 28px;
@@ -306,6 +307,50 @@ h4 {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
+  transition:
+    transform 180ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    background-color 220ms ease;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(180deg, rgba(79, 21, 126, 0.78), rgba(79, 21, 126, 0.12));
+  opacity: 0.22;
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.project-card.is-active {
+  transform: translateY(-2px);
+  border-color: rgba(79, 21, 126, 0.24);
+  box-shadow:
+    0 16px 34px rgba(31, 24, 38, 0.08),
+    0 1px 0 rgba(31, 24, 38, 0.04);
+}
+
+.project-card.is-active::before {
+  opacity: 0.92;
+}
+
+.project-card.is-active .project-type,
+.project-card.is-active .project-url-label {
+  color: var(--accent);
+}
+
+.project-card.is-active .project-media {
+  background: #eee5f4;
+}
+
+.project-card.is-active .project-media img {
+  background: linear-gradient(180deg, #fbf8fe, #e8ddf1);
+}
+
+.project-card.is-active .project-media-caption {
+  color: #554a61;
 }
 
 .project-card-featured {
@@ -495,6 +540,13 @@ h4 {
 .footer-label {
   color: var(--text);
   font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-card::before {
+    transition: none;
+  }
 }
 
 @media (max-width: 760px) {
