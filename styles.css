@@ -289,18 +289,18 @@ h4 {
 .project-showcase,
 .project-list-secondary {
   display: grid;
-  gap: 26px;
+  gap: 22px;
 }
 
 .project-list-secondary {
-  margin-top: 26px;
+  margin-top: 22px;
 }
 
 .project-card {
   position: relative;
   display: grid;
-  gap: var(--space-4);
-  padding: 26px 28px 28px;
+  gap: 14px;
+  padding: 24px;
   min-width: 0;
   overflow: hidden;
   background: var(--surface);
@@ -354,10 +354,6 @@ h4 {
   background: linear-gradient(180deg, #f7f1fc, #e2d4ed);
 }
 
-.project-card.is-active .project-media-caption {
-  color: #4c4357;
-}
-
 .project-card-featured {
   grid-template-columns: 1fr;
 }
@@ -371,7 +367,8 @@ h4 {
   margin: 0;
   order: 2;
   min-width: 0;
-  gap: 0;
+  align-items: center;
+  justify-items: center;
   background: var(--surface-soft);
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -387,21 +384,10 @@ h4 {
   background: linear-gradient(180deg, var(--accent-wash), #e6dced);
 }
 
-.project-media-caption {
-  margin: 0;
-  padding: 10px 14px 14px;
-  color: var(--muted);
-  background: var(--surface-soft);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .project-copy {
   display: grid;
   align-content: start;
-  gap: var(--space-3);
+  gap: 12px;
   min-width: 0;
   padding: 0;
 }
@@ -417,6 +403,14 @@ h4 {
   align-content: start;
 }
 
+.project-meta-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  align-items: center;
+  min-width: 0;
+}
+
 .project-type {
   margin: 0;
   color: var(--accent);
@@ -426,19 +420,28 @@ h4 {
   text-transform: uppercase;
 }
 
+.project-visual-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 .project-card-featured .project-name {
-  font-size: clamp(1.46rem, 2vw, 1.72rem);
-  line-height: 1.12;
+  font-size: clamp(1.34rem, 1.7vw, 1.56rem);
+  line-height: 1.1;
 }
 
 .project-card-secondary .project-name {
-  font-size: 1.26rem;
-  line-height: 1.15;
+  font-size: 1.18rem;
+  line-height: 1.14;
 }
 
 .project-content {
   display: grid;
-  gap: var(--space-2);
+  gap: 0;
   min-width: 0;
   max-width: none;
 }
@@ -446,12 +449,12 @@ h4 {
 .project-summary {
   margin: 0;
   color: var(--text);
-  font-size: 0.99rem;
-  line-height: 1.72;
+  font-size: 0.97rem;
+  line-height: 1.62;
 }
 
 .project-card-featured .project-summary {
-  font-size: 1.02rem;
+  font-size: 0.99rem;
 }
 
 .project-note {
@@ -466,11 +469,11 @@ h4 {
 
 .project-links {
   display: grid;
-  gap: 6px;
+  gap: 4px;
   min-width: 0;
   order: 3;
   margin-top: 0;
-  padding: 2px 0 0;
+  padding: 6px 0 0;
   background: transparent;
 }
 
@@ -488,8 +491,8 @@ h4 {
   max-width: 100%;
   color: var(--accent);
   font-family: "SFMono-Regular", Menlo, Consolas, monospace;
-  font-size: 0.82rem;
-  line-height: 1.7;
+  font-size: 0.76rem;
+  line-height: 1.5;
   overflow-wrap: anywhere;
   word-break: break-word;
   text-decoration: underline;
@@ -508,10 +511,10 @@ h4 {
 }
 
 .project-type,
+.project-visual-label,
 .project-name,
 .project-summary,
-.project-note,
-.project-media-caption {
+.project-note {
   overflow-wrap: anywhere;
 }
 
@@ -555,6 +558,42 @@ h4 {
 }
 
 @media (min-width: 900px) {
+  .project-card {
+    grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+    grid-template-areas:
+      "copy media"
+      "copy links";
+    gap: 18px 24px;
+    padding: 24px 26px;
+    align-items: start;
+  }
+
+  .project-copy {
+    grid-area: copy;
+    max-width: 60ch;
+  }
+
+  .project-media {
+    grid-area: media;
+    order: unset;
+  }
+
+  .project-media img {
+    max-height: 320px;
+  }
+
+  .project-card-secondary .project-media img {
+    max-height: 280px;
+  }
+
+  .project-links {
+    grid-area: links;
+    order: unset;
+    align-content: start;
+    padding-top: 10px;
+    border-top: 1px solid rgba(67, 16, 109, 0.12);
+  }
+
   .project-card.is-active {
     transform: translateY(-4px);
     background: #fbf7ff;
@@ -617,6 +656,10 @@ h4 {
   .project-copy {
     padding: 0;
   }
+
+  .project-links {
+    padding-top: 6px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -638,7 +681,7 @@ h4 {
     align-items: stretch;
   }
 
-  .project-media-caption {
-    font-size: 0.68rem;
+  .project-meta-line {
+    gap: 6px 8px;
   }
 }
