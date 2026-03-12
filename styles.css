@@ -1,11 +1,13 @@
 :root {
-  --bg: #f2f2f2;
-  --surface: #ffffff;
-  --text: #404040;
-  --muted: #6d6d6d;
-  --line: #d6d6d6;
-  --accent: #57068c;
-  --accent-soft: #eee6f3;
+  --bg: #f5f2ee;
+  --surface: #fffdfa;
+  --surface-soft: #f3eeea;
+  --text: #353238;
+  --muted: #6a6670;
+  --line: #ddd6de;
+  --accent: #5a168f;
+  --accent-soft: #f3ebf8;
+  --accent-wash: #faf6fd;
   --content-width: 1120px;
 }
 
@@ -72,9 +74,9 @@ a {
   gap: 32px;
   align-items: start;
   padding: 22px 24px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), var(--surface));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), var(--surface-soft));
   border: 1px solid var(--line);
-  border-left: 4px solid var(--accent);
+  border-left: 3px solid rgba(90, 22, 143, 0.75);
 }
 
 .hero-copy {
@@ -284,13 +286,13 @@ h4 {
 
 .project-card {
   display: grid;
-  gap: 14px;
+  gap: 16px;
   padding: 22px 24px 24px;
   min-width: 0;
   overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-left: 3px solid var(--accent);
+  box-shadow: 0 1px 0 rgba(53, 50, 56, 0.02);
 }
 
 .project-card-featured {
@@ -306,9 +308,10 @@ h4 {
   margin: 0;
   order: 2;
   min-width: 0;
-  background: #ffffff;
-  border: 1px solid var(--line);
-  border-bottom: 0;
+  gap: 0;
+  background: var(--surface-soft);
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .project-media img {
@@ -318,14 +321,14 @@ h4 {
   aspect-ratio: 16 / 9;
   object-fit: contain;
   object-position: center;
-  background: linear-gradient(180deg, #f7f5f9, #efebf3);
+  background: linear-gradient(180deg, var(--accent-wash), #efe8f4);
 }
 
 .project-media-caption {
   margin: 0;
-  padding: 10px 12px 12px;
+  padding: 10px 14px 14px;
   color: var(--muted);
-  background: #ffffff;
+  background: var(--surface-soft);
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -349,8 +352,6 @@ h4 {
   gap: 8px;
   min-width: 0;
   align-content: start;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--line);
 }
 
 .project-type {
@@ -399,12 +400,9 @@ h4 {
   gap: 5px;
   min-width: 0;
   order: 3;
-  margin-top: -14px;
-  padding: 10px 12px;
-  background: #faf8fc;
-  border: 1px solid var(--line);
-  border-top: 0;
-  border-left: 3px solid var(--accent);
+  margin-top: 0;
+  padding: 0;
+  background: transparent;
 }
 
 .project-url-label {
@@ -438,6 +436,11 @@ h4 {
 .project-url-muted {
   color: var(--muted);
   text-decoration: none;
+}
+
+.project-card-featured .project-links,
+.project-card-secondary .project-links {
+  padding-top: 2px;
 }
 
 .project-type,
