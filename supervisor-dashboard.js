@@ -4,11 +4,19 @@ const STATUS_CLASS_MAP = {
   "In development": "status-in-development",
 };
 
+const HEALTH_CLASS_MAP = {
+  "On track": "health-on-track",
+  "Needs decision": "health-needs-decision",
+  "In build": "health-in-build",
+  Monitor: "health-monitor",
+};
+
 const FILTERS = {
   all: () => true,
   priority: (project) => Number(project.priority_rank) <= 3,
-  active: (project) => project.current_status === "Active",
-  review: (project) => project.current_status === "In review" || project.current_status === "In development",
+  attention: (project) =>
+    project.project_health === "Needs decision" || project.project_health === "In build",
+  ontrack: (project) => project.project_health === "On track",
   public: (project) => /^https?:\/\//.test(project.public_url_or_access),
 };
 
@@ -59,31 +67,33 @@ function bindFilters(projectGrid) {
 }
 
 function renderMetrics(container, projects) {
-  const publicCount = projects.filter((project) => /^https?:\/\//.test(project.public_url_or_access)).length;
-  const activeCount = projects.filter((project) => project.current_status === "Active").length;
-  const reviewCount = projects.filter((project) => project.current_status !== "Active").length;
   const priorityCount = projects.filter((project) => Number(project.priority_rank) <= 3).length;
+  const attentionCount = projects.filter(
+    (project) => project.project_health === "Needs decision" || project.project_health === "In build"
+  ).length;
+  const onTrackCount = projects.filter((project) => project.project_health === "On track").length;
+  const publicCount = projects.filter((project) => /^https?:\/\//.test(project.public_url_or_access)).length;
 
   const metrics = [
     {
-      label: "Total projects",
-      value: projects.length,
-      subline: "Visible body of work currently being tracked",
-    },
-    {
-      label: "Active now",
-      value: activeCount,
-      subline: "Projects already moving in delivery or rollout",
-    },
-    {
-      label: "Public outputs",
-      value: publicCount,
-      subline: "Live demos or public reference URLs available",
-    },
-    {
-      label: "Leadership focus",
+      label: "Top priorities",
       value: priorityCount,
-      subline: `${reviewCount} project${reviewCount === 1 ? "" : "s"} currently need review, access, or visibility decisions`,
+      subline: "Highest-priority projects to monitor closely",
+    },
+    {
+      label: "Needs attention",
+      value: attentionCount,
+      subline: "Projects needing a decision, approval, or unblock",
+    },
+    {
+      label: "On track",
+      value: onTrackCount,
+      subline: "Projects progressing without immediate intervention",
+    },
+    {
+      label: "Public links",
+      value: publicCount,
+      subline: "Projects with a live URL or public reference available",
     },
   ];
 
@@ -111,6 +121,7 @@ function renderProjects(container, projects, activeFilter) {
   container.innerHTML = filteredProjects
     .map((project) => {
       const statusClass = STATUS_CLASS_MAP[project.current_status] || "";
+      const healthClass = HEALTH_CLASS_MAP[project.project_health] || "";
       const urlMarkup = /^https?:\/\//.test(project.public_url_or_access)
         ? `
           <div class="project-link-group">
@@ -135,6 +146,7 @@ function renderProjects(container, projects, activeFilter) {
               </div>
               <div class="project-meta-row">
                 <span class="workstream-pill">${escapeHtml(project.workstream)}</span>
+                <span class="health-pill ${healthClass}">${escapeHtml(project.project_health)}</span>
                 <span class="status-pill ${statusClass}">${escapeHtml(project.current_status)}</span>
               </div>
             </div>
@@ -144,49 +156,42 @@ function renderProjects(container, projects, activeFilter) {
             </div>
           </header>
 
-          <div class="project-card-layout">
-            <div class="project-column">
-              <section class="detail-panel">
-                <div class="section-heading-row">
-                  <p class="section-kicker">Project</p>
-                  <p class="project-tagline">Lead: ${escapeHtml(project.lead_consultant || "Andi Shehu")}</p>
-                </div>
-                <p class="card-text">${escapeHtml(project.what_the_project_does)}</p>
-                <div class="beneficiary-line">
-                  <span class="beneficiary-label">Primary users:</span>
-                  <span class="card-beneficiaries">${escapeHtml(project.primary_users_or_beneficiaries)}</span>
-                </div>
-              </section>
+          <p class="project-summary-line">${escapeHtml(project.project_summary)}</p>
 
-              <section class="detail-panel emphasis-panel">
-                <p class="section-kicker">Why it matters to NYU</p>
-                <p class="card-text">${escapeHtml(project.why_it_matters_to_nyu)}</p>
-              </section>
-            </div>
+          <div class="management-grid">
+            <section class="detail-panel">
+              <p class="section-kicker">Current state</p>
+              <p class="card-text">${escapeHtml(project.work_completed_to_date)}</p>
+            </section>
 
-            <div class="project-column">
-              <section class="detail-panel">
-                <p class="section-kicker">Work completed</p>
-                <p class="card-text">${escapeHtml(project.work_completed_to_date)}</p>
-              </section>
+            <section class="detail-panel emphasis-panel">
+              <p class="section-kicker">Current focus</p>
+              <p class="card-text">${escapeHtml(project.current_focus)}</p>
+            </section>
 
-              <section class="detail-panel">
-                <p class="section-kicker">Future work / what needs to get done</p>
-                <p class="card-text">${escapeHtml(project.next_30_day_goal)}</p>
-              </section>
-            </div>
+            <section class="detail-panel attention-panel">
+              <p class="section-kicker">Supervisor attention</p>
+              <p class="support-text">${escapeHtml(project.supervisor_attention)}</p>
+            </section>
+
+            <section class="detail-panel milestone-panel">
+              <div class="section-heading-row">
+                <p class="section-kicker">Next milestone</p>
+                <p class="timeline-note">${escapeHtml(project.target_timeline)}</p>
+              </div>
+              <p class="card-text">${escapeHtml(project.next_milestone)}</p>
+            </section>
           </div>
 
-          <div class="support-list">
-            <section class="detail-panel">
-              <p class="section-kicker">Support needed from supervisor</p>
-              <p class="support-text">${escapeHtml(project.support_needed_from_supervisor)}</p>
-            </section>
-
-            <section class="detail-panel funding-panel">
-              <p class="section-kicker">Funding case for leadership</p>
-              <p class="funding-text">${escapeHtml(project.funding_case_for_leadership)}</p>
-            </section>
+          <div class="project-footnotes">
+            <p class="project-footnote">
+              <span class="footnote-label">Strategic value</span>
+              ${escapeHtml(project.why_it_matters_to_nyu)}
+            </p>
+            <p class="project-footnote">
+              <span class="footnote-label">Funding case</span>
+              ${escapeHtml(project.funding_case_for_leadership)}
+            </p>
           </div>
 
           ${buildReviewWorkspace(project)}
@@ -449,7 +454,12 @@ function bindExportButton(button) {
 
       return {
         project_title: project.project_title,
+        project_health: project.project_health,
         current_status: project.current_status,
+        current_focus: project.current_focus,
+        next_milestone: project.next_milestone,
+        target_timeline: project.target_timeline,
+        supervisor_attention: project.supervisor_attention,
         review_status: reviewState.reviewStatus,
         approval_status: reviewState.approvalStatus,
         next_review_date: reviewState.nextReviewDate,

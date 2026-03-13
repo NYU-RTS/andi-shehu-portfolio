@@ -317,7 +317,8 @@ a {
 }
 
 .workstream-pill,
-.status-pill {
+.status-pill,
+.health-pill {
   display: inline-flex;
   align-items: center;
   min-height: 32px;
@@ -338,6 +339,11 @@ a {
   color: var(--accent);
 }
 
+.health-pill {
+  background: rgba(67, 16, 109, 0.1);
+  color: var(--accent);
+}
+
 .status-pill.status-active {
   background: var(--success-bg);
   color: var(--success-text);
@@ -351,6 +357,26 @@ a {
 .status-pill.status-in-development {
   background: var(--progress-bg);
   color: var(--progress-text);
+}
+
+.health-pill.health-on-track {
+  background: var(--success-bg);
+  color: var(--success-text);
+}
+
+.health-pill.health-needs-decision {
+  background: var(--review-bg);
+  color: var(--review-text);
+}
+
+.health-pill.health-in-build {
+  background: var(--progress-bg);
+  color: var(--progress-text);
+}
+
+.health-pill.health-monitor {
+  background: rgba(67, 16, 109, 0.1);
+  color: var(--accent);
 }
 
 .project-card-header-side {
@@ -385,7 +411,7 @@ a {
   min-width: 154px;
   color: #ffffff;
   background: linear-gradient(180deg, var(--link-accent), var(--link-accent-strong));
-  box-shadow: 0 10px 20px rgba(13, 91, 89, 0.18);
+  box-shadow: 0 10px 20px rgba(201, 106, 24, 0.2);
 }
 
 .project-url.project-url-primary:hover {
@@ -406,14 +432,17 @@ a {
   max-width: 30ch;
 }
 
-.project-card-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  gap: 18px;
+.project-summary-line {
+  margin: 0;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.62;
+  max-width: 74ch;
 }
 
-.project-column {
+.management-grid {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
 
@@ -429,6 +458,10 @@ a {
 
 .detail-panel.emphasis-panel {
   background: linear-gradient(180deg, rgba(241, 233, 248, 0.78), rgba(241, 233, 248, 0.44));
+}
+
+.detail-panel.attention-panel {
+  background: linear-gradient(180deg, rgba(255, 241, 221, 0.78), rgba(255, 241, 221, 0.46));
 }
 
 .section-heading-row {
@@ -448,31 +481,32 @@ a {
   font-weight: 700;
 }
 
-.project-tagline {
+.timeline-note {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.project-footnotes {
+  display: grid;
+  gap: 8px;
+  padding-top: 2px;
+}
+
+.project-footnote {
   margin: 0;
   color: var(--muted);
   font-size: 0.9rem;
+  line-height: 1.6;
 }
 
-.beneficiary-line {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  align-items: start;
-}
-
-.beneficiary-label {
+.footnote-label {
+  display: inline-block;
+  margin-right: 8px;
   color: var(--text);
   font-weight: 600;
-}
-
-.funding-panel {
-  border-left: 3px solid rgba(67, 16, 109, 0.66);
-}
-
-.support-list {
-  display: grid;
-  gap: 12px;
 }
 
 .review-workspace {
@@ -615,7 +649,7 @@ a {
 
 @media (max-width: 1040px) {
   .overview-panel,
-  .project-card-layout {
+  .management-grid {
     grid-template-columns: 1fr;
   }
 
