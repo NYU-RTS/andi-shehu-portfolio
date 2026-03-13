@@ -171,7 +171,7 @@ function renderProjects(container, projects, activeFilter) {
               </section>
 
               <section class="detail-panel">
-                <p class="section-kicker">Next 30 days</p>
+                <p class="section-kicker">Future work / what needs to get done</p>
                 <p class="card-text">${escapeHtml(project.next_30_day_goal)}</p>
               </section>
             </div>
