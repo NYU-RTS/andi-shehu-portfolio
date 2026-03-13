@@ -112,8 +112,18 @@ function renderProjects(container, projects, activeFilter) {
     .map((project) => {
       const statusClass = STATUS_CLASS_MAP[project.current_status] || "";
       const urlMarkup = /^https?:\/\//.test(project.public_url_or_access)
-        ? `<a class="project-url" href="${escapeAttribute(project.public_url_or_access)}" target="_blank" rel="noreferrer">Open output</a>`
-        : `<span class="project-url is-muted">${escapeHtml(project.public_url_or_access || "No public URL")}</span>`;
+        ? `
+          <div class="project-link-group">
+            <a class="project-url project-url-primary" href="${escapeAttribute(project.public_url_or_access)}" target="_blank" rel="noreferrer">Open link</a>
+            <p class="project-url-meta">${escapeHtml(formatUrlDisplay(project.public_url_or_access))}</p>
+          </div>
+        `
+        : `
+          <div class="project-link-group">
+            <span class="project-url is-muted">${escapeHtml(project.public_url_or_access || "No public link")}</span>
+            <p class="project-url-meta">${escapeHtml(getAccessMeta(project.public_url_or_access))}</p>
+          </div>
+        `;
 
       return `
         <article class="project-card" data-project-key="${escapeAttribute(getProjectKey(project))}">
@@ -129,7 +139,7 @@ function renderProjects(container, projects, activeFilter) {
               </div>
             </div>
             <div class="project-card-header-side">
-              <p class="card-kicker">Current output</p>
+              <p class="card-kicker">Product link</p>
               ${urlMarkup}
             </div>
           </header>
@@ -455,6 +465,39 @@ function bindExportButton(button) {
 
 function getProjectKey(project) {
   return `supervisor-review:${project.project_title}`;
+}
+
+function formatUrlDisplay(urlValue) {
+  try {
+    const url = new URL(urlValue);
+    const cleanPath = url.pathname.replace(/\/$/, "");
+    const segments = cleanPath.split("/").filter(Boolean);
+
+    if (!segments.length) {
+      return url.hostname;
+    }
+
+    const shortPath = segments.length > 2 ? `${segments[0]}/${segments[1]}/...` : segments.join("/");
+    return `${url.hostname}/${shortPath}`;
+  } catch (error) {
+    return urlValue.replace(/^https?:\/\//, "").replace(/\/$/, "");
+  }
+}
+
+function getAccessMeta(accessValue) {
+  if (!accessValue) {
+    return "No public destination available yet";
+  }
+
+  if (/request early access/i.test(accessValue)) {
+    return "Access is managed directly";
+  }
+
+  if (/private preview/i.test(accessValue)) {
+    return "Not publicly accessible";
+  }
+
+  return "Reference link or access state";
 }
 
 function toCsv(rows) {
