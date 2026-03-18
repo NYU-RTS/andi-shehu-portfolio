@@ -1,0 +1,29 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F4EEE8"/>
+  <rect x="70" y="62" width="1460" height="776" rx="36" fill="#FBF7F2" stroke="#D6CBD7" stroke-width="4"/>
+  <rect x="128" y="124" width="248" height="54" rx="27" fill="#43106D"/>
+  <text x="160" y="158" fill="#FFFFFF" font-family="Avenir Next, Arial, sans-serif" font-size="24" font-weight="700">Executive strategy</text>
+  <text x="128" y="256" fill="#26212A" font-family="Georgia, serif" font-size="82" font-weight="700">Institutional</text>
+  <text x="128" y="338" fill="#26212A" font-family="Georgia, serif" font-size="82" font-weight="700">GenAI support</text>
+  <text x="128" y="394" fill="#6A6172" font-family="Avenir Next, Arial, sans-serif" font-size="34">Research needs, peer platforms, and recommended next steps.</text>
+
+  <rect x="128" y="470" width="384" height="222" rx="24" fill="#EFE5F7" stroke="#D6CBD7" stroke-width="3"/>
+  <text x="160" y="518" fill="#43106D" font-family="Avenir Next, Arial, sans-serif" font-size="24" font-weight="700">Researcher needs</text>
+  <rect x="160" y="548" width="260" height="18" rx="9" fill="#8D6BA7" opacity="0.85"/>
+  <rect x="160" y="580" width="220" height="18" rx="9" fill="#8D6BA7" opacity="0.65"/>
+  <rect x="160" y="612" width="244" height="18" rx="9" fill="#8D6BA7" opacity="0.5"/>
+
+  <rect x="560" y="470" width="384" height="222" rx="24" fill="#E6EFF3" stroke="#D6CBD7" stroke-width="3"/>
+  <text x="592" y="518" fill="#1D5360" font-family="Avenir Next, Arial, sans-serif" font-size="24" font-weight="700">Peer landscape</text>
+  <circle cx="632" cy="590" r="42" fill="#2C6C7A"/>
+  <circle cx="740" cy="560" r="34" fill="#5F96A2"/>
+  <circle cx="812" cy="626" r="28" fill="#89B2BA"/>
+  <circle cx="886" cy="574" r="46" fill="#B7D0D5"/>
+  <path d="M632 590L740 560L812 626L886 574" stroke="#1D5360" stroke-width="6" stroke-linecap="round"/>
+
+  <rect x="992" y="470" width="410" height="222" rx="24" fill="#FFF1E2" stroke="#D6CBD7" stroke-width="3"/>
+  <text x="1026" y="518" fill="#B15E16" font-family="Avenir Next, Arial, sans-serif" font-size="24" font-weight="700">Recommended next steps</text>
+  <rect x="1026" y="550" width="320" height="22" rx="11" fill="#D8853F" opacity="0.88"/>
+  <rect x="1026" y="590" width="278" height="22" rx="11" fill="#D8853F" opacity="0.68"/>
+  <rect x="1026" y="630" width="302" height="22" rx="11" fill="#D8853F" opacity="0.48"/>
+</svg>
