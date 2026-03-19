@@ -1,27 +1,27 @@
 <svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="1200" height="800" fill="#F4F2EE"/>
   <rect x="48" y="48" width="1104" height="704" rx="24" fill="#FBFAF8" stroke="#D8D2C8"/>
-  <text x="96" y="136" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700">RAG applications POC</text>
-  <text x="96" y="176" fill="#6D6D6D" font-family="Arial, Helvetica, sans-serif" font-size="24">Rapid prototyping for retrieval, grounded answers, and workflow testing.</text>
+  <text x="96" y="126" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700">Clinical evidence translation</text>
+  <text x="96" y="164" fill="#6D6D6D" font-family="Arial, Helvetica, sans-serif" font-size="22">AI-assisted guidance for substance use, harm reduction, and point-of-care use.</text>
   <rect x="96" y="236" width="340" height="396" rx="26" fill="#1F2023"/>
-  <text x="132" y="300" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Prototype flow</text>
+  <text x="132" y="300" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Pilot workflow</text>
   <rect x="132" y="342" width="268" height="54" rx="18" fill="#57068C"/>
   <rect x="132" y="418" width="268" height="54" rx="18" fill="#7A45A6"/>
   <rect x="132" y="494" width="268" height="54" rx="18" fill="#AA87C6"/>
-  <text x="168" y="376" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="20">query and context</text>
-  <text x="168" y="452" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="20">retrieval and ranking</text>
-  <text x="168" y="528" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="20">answer and review</text>
+  <text x="168" y="376" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="20">clinical scenario</text>
+  <text x="168" y="452" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="20">evidence retrieval</text>
+  <text x="168" y="528" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="20">guided response</text>
   <rect x="486" y="236" width="570" height="178" rx="24" fill="#FFFFFF" stroke="#D6D6D6"/>
-  <text x="524" y="292" fill="#57068C" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Exploration areas</text>
-  <rect x="524" y="326" width="158" height="40" rx="14" fill="#F1E9F8"/>
-  <rect x="700" y="326" width="170" height="40" rx="14" fill="#F1E9F8"/>
-  <rect x="888" y="326" width="130" height="40" rx="14" fill="#F1E9F8"/>
-  <text x="548" y="352" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="18">document QA</text>
-  <text x="726" y="352" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="18">search patterns</text>
-  <text x="918" y="352" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="18">UX tests</text>
+  <text x="524" y="292" fill="#57068C" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Focus areas</text>
+  <rect x="524" y="326" width="172" height="40" rx="14" fill="#F1E9F8"/>
+  <rect x="714" y="326" width="170" height="40" rx="14" fill="#F1E9F8"/>
+  <rect x="902" y="326" width="118" height="40" rx="14" fill="#F1E9F8"/>
+  <text x="548" y="352" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="18">harm reduction</text>
+  <text x="742" y="352" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="18">communication</text>
+  <text x="930" y="352" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="18">overdose</text>
   <rect x="486" y="454" width="570" height="178" rx="24" fill="#EEE6F3" stroke="#D6D1DC"/>
-  <text x="524" y="510" fill="#57068C" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">POC goals</text>
-  <text x="524" y="552" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="20">Validate retrieval quality</text>
-  <text x="524" y="586" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="20">Test grounded response patterns</text>
-  <text x="524" y="620" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="20">Identify strongest path to productization</text>
+  <text x="524" y="510" fill="#57068C" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Pilot goals</text>
+  <text x="524" y="552" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="20">Turn evolving evidence into usable guidance</text>
+  <text x="524" y="586" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="20">Support non-stigmatizing clinical responses</text>
+  <text x="524" y="620" fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="20">Test feasibility, trust, and workflow fit</text>
 </svg>
