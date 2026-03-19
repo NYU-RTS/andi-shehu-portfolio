@@ -386,6 +386,7 @@ h4 {
 
 .project-copy {
   display: grid;
+  grid-template-rows: auto 1fr;
   align-content: start;
   gap: 12px;
   min-width: 0;
@@ -440,9 +441,11 @@ h4 {
 }
 
 .project-content {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 0;
   min-width: 0;
+  min-height: 0;
   max-width: none;
 }
 
@@ -461,6 +464,38 @@ h4 {
   margin: 0;
   font-size: 0.94rem;
   max-width: 70ch;
+}
+
+.project-team {
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+.project-team-label {
+  margin: 0 0 6px;
+  color: var(--accent);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.project-team-list {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.62;
+}
+
+.project-team-list a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.project-team-list a:hover {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
 }
 
 .project-card-secondary .project-media img {
@@ -514,7 +549,9 @@ h4 {
 .project-visual-label,
 .project-name,
 .project-summary,
-.project-note {
+.project-note,
+.project-team-list,
+.project-team-label {
   overflow-wrap: anywhere;
 }
 
