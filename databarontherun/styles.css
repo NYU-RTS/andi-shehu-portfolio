@@ -1,0 +1,204 @@
+.story-page {
+  display: grid;
+  gap: 0;
+}
+
+.story-intro {
+  padding-bottom: 8px;
+}
+
+.story-hero {
+  display: grid;
+  gap: 22px;
+  padding: 28px 30px;
+  background:
+    radial-gradient(circle at top right, rgba(67, 16, 109, 0.12), transparent 36%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.7), var(--surface-soft));
+  border: 1px solid var(--line);
+  border-left: 3px solid rgba(67, 16, 109, 0.78);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.story-copy {
+  display: grid;
+  gap: 0;
+}
+
+.story-title {
+  margin: 0;
+  font-family: "Iowan Old Style", Georgia, "Times New Roman", serif;
+  font-size: clamp(2.1rem, 4vw, 3.3rem);
+  line-height: 0.98;
+}
+
+.story-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.story-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  color: var(--accent);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(67, 16, 109, 0.16);
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.story-hero-media {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(67, 16, 109, 0.14);
+  background: #ddd1e7;
+}
+
+.story-hero-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.story-section {
+  padding-top: 32px;
+}
+
+.story-grid {
+  display: grid;
+  gap: 22px;
+}
+
+.story-panel {
+  margin: 0;
+  padding: 22px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.story-panel-label {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.story-paragraph {
+  margin: 14px 0 0;
+  color: var(--text);
+  font-size: 0.97rem;
+  line-height: 1.72;
+  max-width: 70ch;
+}
+
+.story-list {
+  margin: 18px 0 0;
+  padding-left: 18px;
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.68;
+}
+
+.story-list li + li {
+  margin-top: 8px;
+}
+
+.story-panel-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: calc(var(--radius-md) - 2px);
+}
+
+.story-panel-photo figcaption,
+.story-gallery-card figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.58;
+}
+
+.story-gallery {
+  display: grid;
+  gap: 18px;
+}
+
+.story-gallery-card {
+  margin: 0;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.story-gallery-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: calc(var(--radius-md) - 2px);
+}
+
+.story-reference {
+  margin-top: 32px;
+}
+
+@media (min-width: 920px) {
+  .story-hero {
+    grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+    align-items: start;
+  }
+
+  .story-grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+    align-items: start;
+  }
+
+  .story-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .story-gallery-card-featured {
+    grid-column: span 2;
+  }
+
+  .story-gallery-card-featured img {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 760px) {
+  .story-hero {
+    padding: 22px 20px;
+  }
+
+  .story-title {
+    font-size: clamp(1.9rem, 9vw, 2.5rem);
+  }
+
+  .story-panel {
+    padding: 18px;
+  }
+
+  .story-gallery-card {
+    padding: 14px;
+  }
+}
