@@ -1,3 +1,65 @@
+:root {
+  --bg: #080707;
+  --surface: #111010;
+  --surface-soft: #171414;
+  --text: #f3e4cf;
+  --muted: #bea991;
+  --line: rgba(192, 141, 80, 0.18);
+  --accent: #d4a15f;
+  --accent-soft: rgba(212, 161, 95, 0.18);
+  --accent-wash: rgba(212, 161, 95, 0.06);
+  --shadow-soft: 0 18px 48px rgba(0, 0, 0, 0.42);
+}
+
+body {
+  color: var(--text);
+  background:
+    radial-gradient(circle at top, rgba(102, 68, 33, 0.2), transparent 30%),
+    radial-gradient(circle at 20% 20%, rgba(212, 161, 95, 0.1), transparent 26%),
+    linear-gradient(180deg, #0b0909 0%, #080707 100%);
+}
+
+.page-shell {
+  position: relative;
+}
+
+.page-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.2;
+  background:
+    linear-gradient(transparent, rgba(255, 255, 255, 0.02)),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.03) 0,
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  mix-blend-mode: soft-light;
+}
+
+.site-header {
+  border-bottom-color: rgba(192, 141, 80, 0.22);
+}
+
+.brand,
+.site-nav a,
+.footer-line a {
+  color: var(--text);
+}
+
+.site-nav a {
+  color: var(--muted);
+}
+
+.site-nav a:hover,
+.footer-line a:hover {
+  color: var(--accent);
+}
+
 .story-page {
   display: grid;
   gap: 0;
@@ -10,12 +72,12 @@
 .story-hero {
   display: grid;
   gap: 22px;
-  padding: 28px 30px;
+  padding: 30px 32px;
   background:
-    radial-gradient(circle at top right, rgba(67, 16, 109, 0.12), transparent 36%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.7), var(--surface-soft));
-  border: 1px solid var(--line);
-  border-left: 3px solid rgba(67, 16, 109, 0.78);
+    linear-gradient(135deg, rgba(212, 161, 95, 0.08), transparent 44%),
+    linear-gradient(180deg, rgba(28, 24, 22, 0.94), rgba(15, 13, 13, 0.98));
+  border: 1px solid rgba(212, 161, 95, 0.18);
+  border-left: 3px solid rgba(212, 161, 95, 0.78);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
 }
@@ -27,9 +89,23 @@
 
 .story-title {
   margin: 0;
+  color: #f6e8d3;
   font-family: "Iowan Old Style", Georgia, "Times New Roman", serif;
-  font-size: clamp(2.1rem, 4vw, 3.3rem);
-  line-height: 0.98;
+  font-size: clamp(2.4rem, 4vw, 3.9rem);
+  line-height: 0.92;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.story-deck {
+  margin: 12px 0 0;
+  max-width: 38ch;
+  color: var(--accent);
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .story-pill-row {
@@ -44,9 +120,9 @@
   align-items: center;
   min-height: 34px;
   padding: 0 12px;
-  color: var(--accent);
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(67, 16, 109, 0.16);
+  color: #f2dcc0;
+  background: rgba(212, 161, 95, 0.1);
+  border: 1px solid rgba(212, 161, 95, 0.22);
   border-radius: 999px;
   font-size: 0.74rem;
   font-weight: 700;
@@ -58,8 +134,9 @@
   margin: 0;
   overflow: hidden;
   border-radius: var(--radius-md);
-  border: 1px solid rgba(67, 16, 109, 0.14);
-  background: #ddd1e7;
+  border: 1px solid rgba(212, 161, 95, 0.18);
+  background: #090808;
+  box-shadow: 0 28px 72px rgba(0, 0, 0, 0.5);
 }
 
 .story-hero-media img {
@@ -68,6 +145,7 @@
   height: auto;
   aspect-ratio: 16 / 10;
   object-fit: cover;
+  filter: grayscale(0.18) sepia(0.22) contrast(1.04) brightness(0.76);
 }
 
 .story-section {
@@ -82,8 +160,9 @@
 .story-panel {
   margin: 0;
   padding: 22px;
-  background: var(--surface);
-  border: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(24, 20, 19, 0.94), rgba(16, 14, 14, 0.98));
+  border: 1px solid rgba(212, 161, 95, 0.12);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
 }
@@ -99,7 +178,7 @@
 
 .story-paragraph {
   margin: 14px 0 0;
-  color: var(--text);
+  color: #f0dfc8;
   font-size: 0.97rem;
   line-height: 1.72;
   max-width: 70ch;
@@ -108,7 +187,7 @@
 .story-list {
   margin: 18px 0 0;
   padding-left: 18px;
-  color: var(--text);
+  color: #e8d4ba;
   font-size: 0.95rem;
   line-height: 1.68;
 }
@@ -124,12 +203,13 @@
   aspect-ratio: 16 / 10;
   object-fit: cover;
   border-radius: calc(var(--radius-md) - 2px);
+  filter: grayscale(0.22) sepia(0.24) contrast(1.08) brightness(0.78);
 }
 
 .story-panel-photo figcaption,
 .story-gallery-card figcaption {
   margin-top: 10px;
-  color: var(--muted);
+  color: #b8a48c;
   font-size: 0.84rem;
   line-height: 1.58;
 }
@@ -142,10 +222,12 @@
 .story-gallery-card {
   margin: 0;
   padding: 16px;
-  background: var(--surface);
-  border: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(24, 20, 19, 0.94), rgba(14, 12, 12, 0.98));
+  border: 1px solid rgba(212, 161, 95, 0.12);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
 .story-gallery-card img {
@@ -155,10 +237,39 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: calc(var(--radius-md) - 2px);
+  filter: grayscale(0.28) sepia(0.26) contrast(1.12) brightness(0.78);
 }
 
-.story-reference {
-  margin-top: 32px;
+.story-gallery-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(212, 161, 95, 0.24);
+  box-shadow: 0 20px 46px rgba(0, 0, 0, 0.52);
+}
+
+.intro-kicker,
+.story-panel-label,
+.project-url-label,
+.footer-label {
+  color: var(--accent);
+}
+
+.hero-text,
+.hero-note,
+.section-note,
+.footer-line {
+  color: #c5b29a;
+}
+
+.section-heading {
+  margin-bottom: 22px;
+}
+
+.section-title {
+  color: #f3e4cf;
+}
+
+.contact-separator {
+  color: rgba(212, 161, 95, 0.34);
 }
 
 @media (min-width: 920px) {
@@ -173,11 +284,11 @@
   }
 
   .story-gallery {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .story-gallery-card-featured {
-    grid-column: span 2;
+    grid-column: span 3;
   }
 
   .story-gallery-card-featured img {
@@ -192,6 +303,10 @@
 
   .story-title {
     font-size: clamp(1.9rem, 9vw, 2.5rem);
+  }
+
+  .story-deck {
+    font-size: 0.88rem;
   }
 
   .story-panel {
