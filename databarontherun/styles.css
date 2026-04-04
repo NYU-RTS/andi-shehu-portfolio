@@ -1,22 +1,22 @@
 :root {
-  --bg: #080707;
-  --surface: #111010;
-  --surface-soft: #171414;
-  --text: #f3e4cf;
-  --muted: #bea991;
-  --line: rgba(192, 141, 80, 0.18);
-  --accent: #d4a15f;
-  --accent-soft: rgba(212, 161, 95, 0.18);
-  --accent-wash: rgba(212, 161, 95, 0.06);
-  --shadow-soft: 0 18px 48px rgba(0, 0, 0, 0.42);
+  --bg: #d5c4b0;
+  --surface: rgba(245, 237, 226, 0.9);
+  --surface-soft: rgba(232, 219, 204, 0.88);
+  --text: #201915;
+  --muted: #655649;
+  --line: rgba(98, 74, 52, 0.18);
+  --accent: #8c5f37;
+  --accent-soft: rgba(140, 95, 55, 0.14);
+  --accent-wash: rgba(140, 95, 55, 0.05);
+  --shadow-soft: 0 18px 38px rgba(49, 34, 22, 0.12);
 }
 
 body {
   color: var(--text);
   background:
-    radial-gradient(circle at top, rgba(102, 68, 33, 0.2), transparent 30%),
-    radial-gradient(circle at 20% 20%, rgba(212, 161, 95, 0.1), transparent 26%),
-    linear-gradient(180deg, #0b0909 0%, #080707 100%);
+    radial-gradient(circle at top, rgba(255, 248, 240, 0.72), transparent 30%),
+    radial-gradient(circle at 18% 12%, rgba(140, 95, 55, 0.12), transparent 28%),
+    linear-gradient(180deg, #e0d0bc 0%, #ccb59d 100%);
 }
 
 .page-shell {
@@ -28,13 +28,13 @@ body {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.2;
+  opacity: 0.1;
   background:
     linear-gradient(transparent, rgba(255, 255, 255, 0.02)),
     repeating-linear-gradient(
       0deg,
-      rgba(255, 255, 255, 0.03) 0,
-      rgba(255, 255, 255, 0.03) 1px,
+      rgba(70, 48, 30, 0.03) 0,
+      rgba(70, 48, 30, 0.03) 1px,
       transparent 1px,
       transparent 4px
     );
@@ -74,10 +74,10 @@ body {
   gap: 22px;
   padding: 30px 32px;
   background:
-    linear-gradient(135deg, rgba(212, 161, 95, 0.08), transparent 44%),
-    linear-gradient(180deg, rgba(28, 24, 22, 0.94), rgba(15, 13, 13, 0.98));
-  border: 1px solid rgba(212, 161, 95, 0.18);
-  border-left: 3px solid rgba(212, 161, 95, 0.78);
+    linear-gradient(135deg, rgba(140, 95, 55, 0.08), transparent 44%),
+    linear-gradient(180deg, rgba(250, 244, 236, 0.9), rgba(233, 221, 207, 0.94));
+  border: 1px solid rgba(98, 74, 52, 0.18);
+  border-left: 3px solid rgba(140, 95, 55, 0.72);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
 }
@@ -89,22 +89,22 @@ body {
 
 .story-title {
   margin: 0;
-  color: #f6e8d3;
+  color: #2a201a;
   font-family: "Iowan Old Style", Georgia, "Times New Roman", serif;
   font-size: clamp(2.4rem, 4vw, 3.9rem);
   line-height: 0.92;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
 }
 
 .story-deck {
   margin: 12px 0 0;
   max-width: 38ch;
   color: var(--accent);
-  font-size: 0.98rem;
-  font-weight: 600;
+  font-size: 0.94rem;
+  font-weight: 700;
   line-height: 1.6;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
@@ -120,9 +120,9 @@ body {
   align-items: center;
   min-height: 34px;
   padding: 0 12px;
-  color: #f2dcc0;
-  background: rgba(212, 161, 95, 0.1);
-  border: 1px solid rgba(212, 161, 95, 0.22);
+  color: #4f3825;
+  background: rgba(255, 252, 248, 0.68);
+  border: 1px solid rgba(140, 95, 55, 0.18);
   border-radius: 999px;
   font-size: 0.74rem;
   font-weight: 700;
@@ -134,9 +134,9 @@ body {
   margin: 0;
   overflow: hidden;
   border-radius: var(--radius-md);
-  border: 1px solid rgba(212, 161, 95, 0.18);
-  background: #090808;
-  box-shadow: 0 28px 72px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(98, 74, 52, 0.16);
+  background: #d6c4b2;
+  box-shadow: 0 22px 42px rgba(46, 31, 18, 0.16);
 }
 
 .story-hero-media img {
@@ -145,7 +145,7 @@ body {
   height: auto;
   aspect-ratio: 16 / 10;
   object-fit: cover;
-  filter: grayscale(0.18) sepia(0.22) contrast(1.04) brightness(0.76);
+  filter: grayscale(0.12) sepia(0.16) contrast(1.02) brightness(0.92);
 }
 
 .story-section {
@@ -161,8 +161,8 @@ body {
   margin: 0;
   padding: 22px;
   background:
-    linear-gradient(180deg, rgba(24, 20, 19, 0.94), rgba(16, 14, 14, 0.98));
-  border: 1px solid rgba(212, 161, 95, 0.12);
+    linear-gradient(180deg, rgba(247, 240, 230, 0.9), rgba(236, 224, 209, 0.94));
+  border: 1px solid rgba(98, 74, 52, 0.14);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
 }
@@ -178,7 +178,7 @@ body {
 
 .story-paragraph {
   margin: 14px 0 0;
-  color: #f0dfc8;
+  color: #2f251e;
   font-size: 0.97rem;
   line-height: 1.72;
   max-width: 70ch;
@@ -187,7 +187,7 @@ body {
 .story-list {
   margin: 18px 0 0;
   padding-left: 18px;
-  color: #e8d4ba;
+  color: #322820;
   font-size: 0.95rem;
   line-height: 1.68;
 }
@@ -203,13 +203,13 @@ body {
   aspect-ratio: 16 / 10;
   object-fit: cover;
   border-radius: calc(var(--radius-md) - 2px);
-  filter: grayscale(0.22) sepia(0.24) contrast(1.08) brightness(0.78);
+  filter: grayscale(0.16) sepia(0.16) contrast(1.03) brightness(0.9);
 }
 
 .story-panel-photo figcaption,
 .story-gallery-card figcaption {
   margin-top: 10px;
-  color: #b8a48c;
+  color: #675648;
   font-size: 0.84rem;
   line-height: 1.58;
 }
@@ -223,8 +223,8 @@ body {
   margin: 0;
   padding: 16px;
   background:
-    linear-gradient(180deg, rgba(24, 20, 19, 0.94), rgba(14, 12, 12, 0.98));
-  border: 1px solid rgba(212, 161, 95, 0.12);
+    linear-gradient(180deg, rgba(248, 241, 233, 0.9), rgba(235, 223, 210, 0.94));
+  border: 1px solid rgba(98, 74, 52, 0.14);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
@@ -237,13 +237,13 @@ body {
   aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: calc(var(--radius-md) - 2px);
-  filter: grayscale(0.28) sepia(0.26) contrast(1.12) brightness(0.78);
+  filter: grayscale(0.18) sepia(0.18) contrast(1.04) brightness(0.92);
 }
 
 .story-gallery-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(212, 161, 95, 0.24);
-  box-shadow: 0 20px 46px rgba(0, 0, 0, 0.52);
+  border-color: rgba(140, 95, 55, 0.22);
+  box-shadow: 0 20px 40px rgba(49, 34, 22, 0.16);
 }
 
 .intro-kicker,
@@ -257,7 +257,7 @@ body {
 .hero-note,
 .section-note,
 .footer-line {
-  color: #c5b29a;
+  color: #5e4f43;
 }
 
 .section-heading {
@@ -265,11 +265,11 @@ body {
 }
 
 .section-title {
-  color: #f3e4cf;
+  color: #2b211b;
 }
 
 .contact-separator {
-  color: rgba(212, 161, 95, 0.34);
+  color: rgba(140, 95, 55, 0.32);
 }
 
 @media (min-width: 920px) {
